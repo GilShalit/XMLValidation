@@ -1,0 +1,38 @@
+﻿@page "/"
+@using System.IO
+@using System.Net.Http
+@using System.Text
+@using System.Xml;
+@inject HttpClient _client
+
+
+Validation is hapening on OnInitializedAsync.
+<br/> <br/>
+@ValidationResult
+
+@code{
+    string ValidationResult="All good";
+    protected override async Task OnInitializedAsync()
+    {
+        string path = "sample-data/Books.xml";
+        byte[] byteArrayS = await _client.GetByteArrayAsync(path);
+        Console.WriteLine($"{path}: {byteArrayS.Length}");
+        MemoryStream streamS = new MemoryStream(byteArrayS);
+        XmlReader xmlReader = XmlReader.Create(streamS);
+
+        XmlDocument document = new XmlDocument();
+        //document.Validate();
+        try
+        {
+            document.Load(xmlReader);
+        }
+        catch (Exception e)
+        {
+
+            Console.WriteLine($"Validation Error: {e.Message} on line ");
+            ValidationResult = e.Message;
+        }
+    }
+
+
+}

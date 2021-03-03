@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<!-- This file represents a fragment of a bookstore inventory database -->
+<bookstore specialty="novel">
+  <book>
+    <Title>Beginning XML</Title
+    <Publisher>Wrox</Publisher>
+  </book>
+  <book>
+    <Title>Professional XML</Title>
+    <Publisher>Wrox</Publisher>
+  </book>
+  <book>
+    <Title>Programming ADO</Title>
+    <author>
+      <first-name>Mary</first-name>
+      <last-name>Bob</last-name>
+    </author>
+    <datePublished>1/1/2000</datePublished>
+    <Publisher>Microsoft Press</Publisher>
+  </book>
+</bookstore>
